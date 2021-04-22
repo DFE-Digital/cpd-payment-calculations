@@ -9,10 +9,9 @@ module Services
       def call
         {
           per_participant: VariablePaymentsPerParticipant.call(config),
-          **({variable_payment_schedule: VariablePaymentsSchedule.call(config)} if retained_participants).to_h
+          **({ variable_payment_schedule: VariablePaymentsSchedule.call(config) } if retained_participants).to_h,
         }
       end
-
     end
   end
 end

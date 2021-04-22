@@ -10,12 +10,11 @@ module Services
         variable_payment_per_participant
       end
 
-      private
+    private
 
       def variable_payment_per_participant
         band_a * 0.6
       end
-
     end
   end
 end

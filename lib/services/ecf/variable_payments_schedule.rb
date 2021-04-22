@@ -10,7 +10,7 @@ module Services
         variable_payment_schedule
       end
 
-      private
+    private
 
       def variable_payment_schedule
         retained_participants.each_with_object({}) do |(payment_type, number_retained), result|
@@ -33,7 +33,6 @@ module Services
       def variable_payment_per_participant
         VariablePaymentsPerParticipant.call(config)
       end
-
     end
   end
 end
