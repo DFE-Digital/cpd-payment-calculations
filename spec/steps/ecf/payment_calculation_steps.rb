@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 module PaymentCalculationSteps
+  step "the setup fee is £:decimal_placeholder" do |value|
+    @setup_fee = value
+  end
+
   step "the recruitment target is :decimal_placeholder" do |value|
     @recruitment_target = value
   end
@@ -22,6 +26,7 @@ module PaymentCalculationSteps
 
   step "I run the calculation" do
     config = {
+      setup_fee: @setup_fee,
       recruitment_target: @recruitment_target,
       band_a: @band_a,
       retained_participants: @retention_table&.reduce({}) { |res, hash| res.merge({ hash[:payment_type] => hash[:retained_participants] }) },
@@ -30,9 +35,8 @@ module PaymentCalculationSteps
     @result = calculator.call
   end
 
-  step "the per-participant service fee should be £:decimal_placeholder" do |expected_value|
-    expect(@result.dig(:output, :service_fees, :service_fee_per_participant)).to eq(expected_value)
-  end
+  step :assert_service_fee_per_participant, "the per-participant service fee should be reduced to £:decimal_placeholder"
+  step :assert_service_fee_per_participant, "the per-participant service fee should be £:decimal_placeholder"
 
   step "the total service fee should be £:decimal_placeholder" do |expected_value|
     expect(@result.dig(:output, :service_fees, :service_fee_total)).to eq(expected_value)
@@ -42,9 +46,8 @@ module PaymentCalculationSteps
     expect(@result.dig(:output, :service_fees, :service_fee_monthly)).to eq(expected_value)
   end
 
-  step "the output payment per-participant should be £:decimal_placeholder" do |expected_value|
-    expect(@result.dig(:output, :output_payment, :per_participant)).to eq(expected_value)
-  end
+  step :assert_output_per_participant, "the output payment per-participant should be £:decimal_placeholder"
+  step :assert_output_per_participant, "the output payment per-participant should be unchanged at £:decimal_placeholder"
 
   step "the output payment schedule should be as above" do
     aggregate_failures "output payments" do
@@ -57,6 +60,14 @@ module PaymentCalculationSteps
         expect_with_context(actual_values[:subtotal], expectation[:expected_output_payment_subtotal], "#{expectation[:payment_type]} output payment")
       end
     end
+  end
+
+  def assert_service_fee_per_participant(expected_value)
+    expect(@result.dig(:output, :service_fees, :service_fee_per_participant)).to eq(expected_value)
+  end
+
+  def assert_output_per_participant(expected_value)
+    expect(@result.dig(:output, :output_payment, :per_participant)).to eq(expected_value)
   end
 end
 
