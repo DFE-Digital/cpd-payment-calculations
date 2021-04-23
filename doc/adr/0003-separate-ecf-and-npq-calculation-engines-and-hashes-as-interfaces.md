@@ -14,7 +14,7 @@ There are some similarities and many differences in the inputs, outputs and math
 
 1. Both have fixed payments at 40%
 2. Both allow pulling some of the fixed payment into earlier "setup" payments (for cashflow).
-3. The variable payments are very different in detail.
+3. The output payments are very different in detail.
 4. They have different banding systems.
 
 ### People

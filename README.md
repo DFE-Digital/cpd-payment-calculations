@@ -17,7 +17,7 @@ The definitions of the calculations and the example calculations being tested ca
 
 ## Development
 
-Support for Gherkin syntax rspec tests is provided by [turnip](https://github.com/jnicklas/turnip). 
+Support for Gherkin syntax rspec tests is provided by [turnip](https://github.com/jnicklas/turnip).
 
 [Guard](https://github.com/guard/guard) is configured to automatically run tests. Start guard with `bundle exec guard`.
 
@@ -33,8 +33,8 @@ Here are the names we are using in the code and specs for the different concepts
 > Per participant price £995 >>
 per participant service fee £398 (40%) >> monthly service fee £27k >> total service fee £796k
 >
-> Per participant price £995 >> per participant variable payment £597 (60%) >> per participant variable payment for a retention period £119 (20% of 60%) >> variable payment subtotal for a retention period with 1900 retained participants £226k
+> Per participant price £995 >> per participant output payment £597 (60%) >> per participant output payment for a retention period £119 (20% of 60%) >> output payment subtotal for a retention period with 1900 retained participants £226k
 
 * "Participants" includes both teachers and mentors.
-* Note that the contractual term for "variable payment" is actually "output payment", however we're avoiding this in the code to avoid the inevitable confusion with program input/output terminology. These are payments made based on the performance of the training provider (i.e. their output).
-* "Payment type" for start/retention/completion variable payments.
+* Note that the contractual term for "output payment" is actually "output payment", however we're avoiding this in the code to avoid the inevitable confusion with program input/output terminology. These are payments made based on the performance of the training provider (i.e. their output).
+* "Payment type" for start/retention/completion output payments.
