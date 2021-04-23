@@ -13,4 +13,5 @@ group :test do
   gem "turnip"
 end
 
+gem "json-schema"
 gem "rubocop-govuk"
