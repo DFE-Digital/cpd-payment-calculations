@@ -10,7 +10,7 @@ module Services
         retention_points.transform_values do |values|
           {
             per_participant: per_participant_output_payments,
-            total_output_payments: total_output_payments(values[:retained_participants]),
+            total_output_payment: total_output_payment(values[:retained_participants]),
           }
         end
       end
@@ -25,7 +25,7 @@ module Services
         (per_participant_price * 0.6 * output_payment_split).round(2)
       end
 
-      def total_output_payments(retained_participants)
+      def total_output_payment(retained_participants)
         (per_participant_output_payments * retained_participants).round(2)
       end
     end

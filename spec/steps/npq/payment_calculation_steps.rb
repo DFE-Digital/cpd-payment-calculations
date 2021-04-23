@@ -79,7 +79,7 @@ module PaymentCalculationSteps
         )
 
         expect_with_context(
-          result.dig(:output, :output_payments, retention_point, :total_output_payments), values[:expected_output_payment_subtotal], "Total output payment '#{retention_point}'"
+          result.dig(:output, :output_payments, retention_point, :total_output_payment), values[:expected_output_payment_subtotal], "Total output payment '#{retention_point}'"
         )
       end
     end
