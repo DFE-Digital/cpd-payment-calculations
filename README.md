@@ -36,5 +36,5 @@ per participant service fee £398 (40%) >> monthly service fee £27k >> total se
 > Per participant price £995 >> per participant output payment £597 (60%) >> per participant output payment for a retention period £119 (20% of 60%) >> output payment subtotal for a retention period with 1900 retained participants £226k
 
 * "Participants" includes both teachers and mentors.
-* Note that the contractual term for "output payment" is actually "output payment", however we're avoiding this in the code to avoid the inevitable confusion with program input/output terminology. These are payments made based on the performance of the training provider (i.e. their output).
+* "Output" payments are payments made based on the performance of the training provider (i.e. their output). Previously known as "variable" in the code.
 * "Payment type" for start/retention/completion output payments.
