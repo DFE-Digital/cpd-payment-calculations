@@ -2,17 +2,17 @@
 
 module Services
   module Ecf
-    class VariablePaymentsPerParticipant
+    class OutputPaymentPerParticipant
       include InitializeWithConfig
       delegate :band_a, to: :config
 
       def call
-        variable_payment_per_participant
+        output_payment_per_participant
       end
 
     private
 
-      def variable_payment_per_participant
+      def output_payment_per_participant
         band_a * 0.6
       end
     end

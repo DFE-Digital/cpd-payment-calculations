@@ -46,8 +46,8 @@ module PaymentCalculationSteps
     table.hashes.each do |row|
       @retention_table[row["Payment Type"]] = {
         retained_participants: row["Retained Participants"].to_i,
-        expected_per_participant_variable_payment: CurrencyParser.currency_to_big_decimal(row["Expected Per-Participant Output Payment"]),
-        expected_variable_payment_subtotal: CurrencyParser.currency_to_big_decimal(row["Expected Output Payment Subtotal"]),
+        expected_per_participant_output_payment: CurrencyParser.currency_to_big_decimal(row["Expected Per-Participant Output Payment"]),
+        expected_output_payment_subtotal: CurrencyParser.currency_to_big_decimal(row["Expected Output Payment Subtotal"]),
       }
     end
   end
@@ -70,16 +70,16 @@ module PaymentCalculationSteps
     Services::Npq::PaymentCalculation.call(config)
   end
 
-  step "expected variable payments should be as above" do
+  step "expected output payments should be as above" do
     result = calculate
-    aggregate_failures "variable payments" do
+    aggregate_failures "output payments" do
       @retention_table.each do |retention_point, values|
         expect_with_context(
-          result.dig(:output, :variable_payments, retention_point, :per_participant), values[:expected_per_participant_variable_payment], "Payment for retention point '#{retention_point}'"
+          result.dig(:output, :output_payment, retention_point, :per_participant), values[:expected_per_participant_output_payment], "Payment for retention point '#{retention_point}'"
         )
 
         expect_with_context(
-          result.dig(:output, :variable_payments, retention_point, :total_variable_payment), values[:expected_variable_payment_subtotal], "Total variable payment '#{retention_point}'"
+          result.dig(:output, :output_payment, retention_point, :total_output_payment), values[:expected_output_payment_subtotal], "Total output payment '#{retention_point}'"
         )
       end
     end

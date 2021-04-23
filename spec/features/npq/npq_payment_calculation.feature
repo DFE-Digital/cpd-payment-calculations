@@ -10,7 +10,7 @@ Feature: NPQ single-qualification payment schedule calculation
         | Commencement | 1000                  | £180.40                                 | £180,400.00                      |
         | Retention 1  | 700                   | £180.40                                 | £126,280.00                      |
         | Completion   | 300                   | £180.40                                 | £54,120.00                       |
-    Then expected variable payments should be as above
+    Then expected output payments should be as above
       And the service fee payment schedule should be:
         | Month | Service Fee |
         | 1     | £18,989.54  |
@@ -45,7 +45,7 @@ Feature: NPQ single-qualification payment schedule calculation
         | Retention 1  | 700                   | £172.35                                 | £120,645.00                      |
         | Retention 2  | 650                   | £172.35                                 | £112,027.50                      |
         | Completion   | 432                   | £172.35                                 | £74,455.20                       |
-    Then expected variable payments should be as above
+    Then expected output payments should be as above
       And the service fee payment schedule should be:
         | Month | Service Fee |
         | 1     | £18,384.00  |
@@ -86,7 +86,7 @@ Feature: NPQ single-qualification payment schedule calculation
         | Retention 1  | 700                   | £297.75                                 | £208,425.00                      |
         | Retention 2  | 650                   | £297.75                                 | £193,537.50                      |
         | Completion   | 432                   | £297.75                                 | £128,628.00                      |
-    Then expected variable payments should be as above
+    Then expected output payments should be as above
       And the service fee payment schedule should be:
         | Month | Service Fee |
         | 1     | £25,613.00  |

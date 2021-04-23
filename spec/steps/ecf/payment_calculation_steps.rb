@@ -14,8 +14,8 @@ module PaymentCalculationSteps
       {
         payment_type: values["Payment Type"],
         retained_participants: values["Retained Participants"].to_i,
-        expected_per_participant_variable_payment: CurrencyParser.currency_to_big_decimal(values["Expected Per-Participant Output Payment"]),
-        expected_variable_payment_subtotal: CurrencyParser.currency_to_big_decimal(values["Expected Output Payment Subtotal"]),
+        expected_per_participant_output_payment: CurrencyParser.currency_to_big_decimal(values["Expected Per-Participant Output Payment"]),
+        expected_output_payment_subtotal: CurrencyParser.currency_to_big_decimal(values["Expected Output Payment Subtotal"]),
       }
     end
   end
@@ -42,19 +42,19 @@ module PaymentCalculationSteps
     expect(@result.dig(:output, :service_fees, :service_fee_monthly)).to eq(expected_value)
   end
 
-  step "the variable payment per-participant should be £:decimal_placeholder" do |expected_value|
-    expect(@result.dig(:output, :variable_payments, :per_participant)).to eq(expected_value)
+  step "the output payment per-participant should be £:decimal_placeholder" do |expected_value|
+    expect(@result.dig(:output, :output_payment, :per_participant)).to eq(expected_value)
   end
 
-  step "the variable payment schedule should be as above" do
-    aggregate_failures "variable payments" do
-      actual_schedule = @result.dig(:output, :variable_payments, :variable_payment_schedule)
+  step "the output payment schedule should be as above" do
+    aggregate_failures "output payments" do
+      actual_schedule = @result.dig(:output, :output_payment, :output_payment_schedule)
       expect(actual_schedule.length).to eq(@retention_table.length)
       @retention_table.each do |expectation|
         actual_values = actual_schedule[expectation[:payment_type]]
         expect_with_context(actual_values[:retained_participants], expectation[:retained_participants], "#{expectation[:payment_type]} retention numbers passthrough")
-        expect_with_context(actual_values[:per_participant], expectation[:expected_per_participant_variable_payment], "#{expectation[:payment_type]} per participant payment")
-        expect_with_context(actual_values[:subtotal], expectation[:expected_variable_payment_subtotal], "#{expectation[:payment_type]} variable payment")
+        expect_with_context(actual_values[:per_participant], expectation[:expected_per_participant_output_payment], "#{expectation[:payment_type]} per participant payment")
+        expect_with_context(actual_values[:subtotal], expectation[:expected_output_payment_subtotal], "#{expectation[:payment_type]} output payment")
       end
     end
   end
