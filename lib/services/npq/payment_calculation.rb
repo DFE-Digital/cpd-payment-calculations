@@ -10,7 +10,7 @@ module Services
           input: config.to_h,
           output: {
             service_fees: ServiceFees.call(config),
-            output_payments: OutputPayment.call(config),
+            output_payment: OutputPayment.call(config),
           },
         }
       end
