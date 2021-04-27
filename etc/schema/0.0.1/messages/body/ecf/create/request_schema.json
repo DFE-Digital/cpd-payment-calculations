@@ -1,5 +1,5 @@
 {
-  "$id": "https://digital.education.gov.uk/track_and_pay/schemas/messages/body/events/create/request_schema.json/#",
+  "$id": "https://digital.education.gov.uk/track_and_pay/schemas/messages/body/ecf/create/request_schema.json/#",
   "$schema": "http://json-schema.org/draft/2019-09/schema#",
   "$ref": "https://digital.education.gov.uk/track_and_pay/schema/"
 }

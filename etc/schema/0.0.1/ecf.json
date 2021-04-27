@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft/2019-09/schema#",
-  "$id": "https://digital.education.gov.uk/schemas/track_and_pay/schemas/ecf.json/#",
+  "$id": "https://digital.education.gov.uk/schema/track_and_pay/schemas/ecf.json/#",
   "$version": "0.0.1a",
   "input": {
     "type": "object",
@@ -45,125 +45,148 @@
           "Retention 4",
           "Completion"
         ]
-      },
-      "required": [
-        "recruitment_target",
-        "band_a",
-        "retained_participants"
-      ]
-    }
-  },
-  "output": {
-    "service_fees": {
-      "per_participant": {
-        "type": "number"
-      },
-      "total": {
-        "type": "number"
-      },
-      "monthly": {
-        "type": "array",
-        "items": {
-          "type": "number"
-        }
       }
     },
-    "output_payment": {
-      "per_participant": "number",
-      "output_payment_schedule": {
-        "payment_type": {
-          "type": "object",
-          "properties": {
-            "Start": {
-              "type": "object",
-              "properties": {
-                "retained_participants": {
-                  "type": "integer"
-                },
-                "per_participant": {
-                  "type": "number"
-                },
-                "subtotal": {
-                  "type": "number"
+    "required": [
+      "recruitment_target",
+      "band_a",
+      "retained_participants"
+    ]
+
+  },
+  "output": {
+    "type": "object",
+    "properties": {
+      "service_fees": {
+        "type": "object",
+        "properties": {
+          "per_participant": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          },
+          "monthly": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          }
+        },
+        "required": [
+          "per_participant",
+          "total",
+          "monthly"
+        ]
+      },
+      "output_payment": {
+        "type": "object",
+        "properties": {
+          "per_participant": "number",
+          "output_payment_schedule": {
+            "type": "object",
+            "properties": {
+              "payment_type": {
+                "type": "object",
+                "properties": {
+                  "Start": {
+                    "type": "object",
+                    "properties": {
+                      "retained_participants": {
+                        "type": "integer"
+                      },
+                      "per_participant": {
+                        "type": "number"
+                      },
+                      "subtotal": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "Retention 1": {
+                    "type": "object",
+                    "properties": {
+                      "retained_participants": {
+                        "type": "integer"
+                      },
+                      "per_participant": {
+                        "type": "number"
+                      },
+                      "subtotal": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "Retention 2": {
+                    "type": "object",
+                    "properties": {
+                      "retained_participants": {
+                        "type": "integer"
+                      },
+                      "per_participant": {
+                        "type": "number"
+                      },
+                      "subtotal": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "Retention 3": {
+                    "type": "object",
+                    "properties": {
+                      "retained_participants": {
+                        "type": "integer"
+                      },
+                      "per_participant": {
+                        "type": "number"
+                      },
+                      "subtotal": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "Retention 4": {
+                    "type": "object",
+                    "properties": {
+                      "retained_participants": {
+                        "type": "integer"
+                      },
+                      "per_participant": {
+                        "type": "number"
+                      },
+                      "subtotal": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "Completion": {
+                    "type": "object",
+                    "properties": {
+                      "retained_participants": {
+                        "type": "integer"
+                      },
+                      "per_participant": {
+                        "type": "number"
+                      },
+                      "subtotal": {
+                        "type": "number"
+                      }
+                    }
+                  }
                 }
-              }
-            },
-            "Retention 1": {
-              "type": "object",
-              "properties": {
-                "retained_participants": {
-                  "type": "integer"
-                },
-                "per_participant": {
-                  "type": "number"
-                },
-                "subtotal": {
-                  "type": "number"
-                }
-              }
-            },
-            "Retention 2": {
-              "type": "object",
-              "properties": {
-                "retained_participants": {
-                  "type": "integer"
-                },
-                "per_participant": {
-                  "type": "number"
-                },
-                "subtotal": {
-                  "type": "number"
-                }
-              }
-            },
-            "Retention 3": {
-              "type": "object",
-              "properties": {
-                "retained_participants": {
-                  "type": "integer"
-                },
-                "per_participant": {
-                  "type": "number"
-                },
-                "subtotal": {
-                  "type": "number"
-                }
-              }
-            },
-            "Retention 4": {
-              "type": "object",
-              "properties": {
-                "retained_participants": {
-                  "type": "integer"
-                },
-                "per_participant": {
-                  "type": "number"
-                },
-                "subtotal": {
-                  "type": "number"
-                }
-              }
-            },
-            "Completion": {
-              "type": "object",
-              "properties": {
-                "retained_participants": {
-                  "type": "integer"
-                },
-                "per_participant": {
-                  "type": "number"
-                },
-                "subtotal": {
-                  "type": "number"
-                }
+              },
+              "retained_participants": {
+                "type": "object"
               }
             }
           }
         },
-        "retained_participants": {
-          "type": "object"
-        }
+        "required": [
+          "per_participant",
+          "output_payment_schedule"
+        ]
       }
-    }
+    },
+    "required": ["service_fees", "output_payment"]
   }
 }

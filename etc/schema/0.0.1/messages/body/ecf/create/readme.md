@@ -2,7 +2,7 @@
 
 Message type: 'EventCreate'
 
-Decribes a JSON payload of events for a request
+Decribes a JSON payload of events for a submission to the api
 
 ## Scenarios
 
