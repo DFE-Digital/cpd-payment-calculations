@@ -3,8 +3,8 @@
 describe ::Services::Ecf::PaymentCalculation do
   let(:config) do
     {
+      contract: "example_contract",
       recruitment_target: 2000,
-      band_a: BigDecimal(995, 10),
       retained_participants: {
         "Start" => 1900,
         "Retention 1" => 1700,

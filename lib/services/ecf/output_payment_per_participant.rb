@@ -4,7 +4,6 @@ module Services
   module Ecf
     class OutputPaymentPerParticipant
       include InitializeWithConfig
-      delegate :band_a, to: :config
 
       def call
         output_payment_per_participant
@@ -13,7 +12,7 @@ module Services
     private
 
       def output_payment_per_participant
-        band_a * 0.6
+        FromContract.call(config.contract, :band_a).send(:per_participant) * FromContract.call(config.contract, :band_a).send(:weighting)
       end
     end
   end

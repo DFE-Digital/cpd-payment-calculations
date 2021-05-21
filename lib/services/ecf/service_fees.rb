@@ -25,7 +25,7 @@ module Services
       end
 
       def service_fee_per_participant
-        (band_a * 0.4 - setup_cost_per_participant).round(0)
+        (FromContract.(config.contract, :band_a)) * (FromContract.(config.contract, :per_participant)) - setup_cost_per_participant
       end
 
       def service_fee_total

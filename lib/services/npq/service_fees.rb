@@ -28,6 +28,10 @@ module Services
           schedule[0] += total_service_fee - schedule.sum
         end
       end
+
+      def first_service_fee_payment
+        service_fee_payment_schedule[1]=(service_fee_payment_schedule.values.sum-total_service_fee+service_fee_payment_schedule.values[1])
+      end
     end
   end
 end
